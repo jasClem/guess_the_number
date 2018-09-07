@@ -35,13 +35,18 @@ def main():
     (low, high) = configure_range()
     secret = generate_secret(low, high)
 
+    x = 0
     while True:
         guess = get_guess()
+        x = x +1
         result = check_guess(guess, secret)
         print(result)
 
         if result == correct:
+            print('It took ' + str(x) + ' guesses.')
             break
+
+
 
 
 if __name__ == '__main__':
