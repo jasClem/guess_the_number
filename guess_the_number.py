@@ -1,14 +1,14 @@
 import random
 
-correct = 'you guessed correctly!'
+correct = '\nYou guessed correctly!'
 too_low = 'Too Low'
-too_high = 'too high'
+too_high = 'Too High'
 
 
 
 def configure_range():
     '''Set the high and low values for the random number'''
-    print("Specify the range of the random number generated \n")
+    print("\nSpecify the range of the random number generated")
     x = int(input("Enter the first value: "))
     y = int(input("Enter the second value: "))
     return x, y
@@ -23,9 +23,9 @@ def get_guess():
     '''get user's guess'''
     while True:
         try:
-            return int(input('Guess the secret number? '))
+            return int(input('\nGuess the secret number? '))
         except ValueError:
-            print('\n Must be an integer.')
+            print('\nMust be an integer.')
 
 
 def check_guess(guess, secret):
@@ -42,19 +42,22 @@ def main():
 
     (low, high) = configure_range()
     secret = generate_secret(low, high)
-
     x = 0
+
     while True:
         guess = get_guess()
-        x = x +1
+        x = x + 1
         result = check_guess(guess, secret)
         print(result)
 
         if result == correct:
             print('It took ' + str(x) + ' guesses.')
-            playAgain = int(input("Play again? 1 for yes  or 2 for no"))
-            if playAgain == 1:
-                main()
+            playAgain = input("\nWould you like to play again? (y/n) ")
+            if playAgain == "y" or "Y":
+                (low, high) = configure_range()
+                secret = generate_secret(low, high)
+                x = 0
+                continue
             else:
                 break
 
