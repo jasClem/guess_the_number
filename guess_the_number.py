@@ -52,7 +52,11 @@ def main():
 
         if result == correct:
             print('It took ' + str(x) + ' guesses.')
-            break
+            playAgain = int(input("Play again? 1 for yes  or 2 for no"))
+            if playAgain == 1:
+                main()
+            else:
+                break
 
 
 
